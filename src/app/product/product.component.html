@@ -1,0 +1,40 @@
+<div class="cotainer">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-outline" style="margin: 10px;">
+                <input type="search" class="form-control" [(ngModel)]="searchText" 
+                placeholder="Search product" />
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <button class="btn btn-primary" (click)="SortProducts('asc')" style="margin: 10px;">ASC Price</button>
+            <button class="btn btn-primary" (click)="SortProducts('dsc')" style="margin: 10px;">DSC Price</button>
+        </div>
+    </div>
+    <div class="row">
+        <!-- if we write filter before paginate then it will apply only on one page item -->
+        <div class="col-sm-3"
+            *ngFor="let prod of myProducts | paginate:{ itemsPerPage: 8, currentPage: p } 
+            | filter: searchText ">
+            <div class="card" style="margin: 10px;">
+                <img [src]="prod.image" class="card-img-top" alt="image not found" height="150px">
+                <div class="card-body">
+                    <h5 class="card-title">Title: {{prod.title}}</h5>
+                    <p class="card-text"><b>Category:</b> {{prod.category}}</p>
+                    <p class="card-text"><b>Price:</b> {{prod.price}}</p>
+                    <a href="#" class="btn btn-primary">Buy</a> &nbsp; &nbsp; &nbsp;
+                    <a href="#" class="btn btn-success" (click)="addToCart()">Add to cart</a> <hr>
+                    <button class="btn btn-primary" routerLink="/product-details/{{prod.id}}">Prod Details - Path param</button>
+                    <!-- OR -->
+                    <!-- <button class="btn btn-primary" [routerLink]="['/product-details', prod.id]">Prod Details - Path param</button> -->
+                    <hr>
+                    <button class="btn btn-primary" [routerLink]="['/product-detail2']"
+                    [queryParams]="{id:prod.id,title:prod.title,price:prod.price}">Prod Details - Query param</button>
+                </div>
+            </div>
+        </div>
+
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+    </div>
+</div>

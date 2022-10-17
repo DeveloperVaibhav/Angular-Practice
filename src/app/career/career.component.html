@@ -1,0 +1,18 @@
+<h3>career component loaded</h3>
+
+<h3>Common section for both Permanent Jobs and Contract based Jobs</h3>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <!-- don't use routerLink="/permanent-jobs" and routerLink="/contract-jobs"
+                 bcz it is not working for childer here -->
+            <a class="nav-link" routerLink="permanent-jobs">Permanent Jobs</a> 
+            <a class="nav-link" routerLink="contract-jobs">Contract Jobs</a>
+        </div>
+        <div class="col-sm-6">
+            <!-- this will load the Permanent Jobs and Contract Jobs component here -->
+           <router-outlet></router-outlet> 
+        </div>
+    </div>
+</div>

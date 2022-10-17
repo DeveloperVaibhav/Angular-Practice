@@ -1,0 +1,13 @@
+<p>child1 works!</p>
+ Value of 'a' from parent : {{a_value}} 
+
+ <div>cars from parent: [ <span *ngFor="let car of cars">{{car}},</span>]</div> 
+ <!-- <button (click)="refresh">refresh the child</button> -->
+
+ <div>Name from Math service is {{mathObj.name}}</div>
+ <!-- will aslo affect/update name in child-2 as well, if we use different reference name
+     still will update name in child-2 bcz object is same pointing to same memory location/address -->
+<!-- if you don't want to update it in child-2 then don't go with service as service will
+ be public and will affect the variable all the places wherever it is used.
+ so in this case, define the variable at component level -->
+ <button (click)="mathObj.name='Nayan'">click to change name</button>

@@ -1,0 +1,52 @@
+<h3>Name from math service: {{math.name}}</h3>
+
+<div class="row" style="margin: 20px;">
+  <div class="col-sm-8">
+    <h3 class="text-center">Employee List</h3>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Sr no.</th>
+          <th>Emp Id</th>
+          <th>Name</th>
+          <th>Gender</th>
+          <th>Salary</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let emp of employeeList ; let i=index; trackBy:trackByEmpId">
+          <!-- titleToName, convertionOfSalary -> custom pipe -->
+          <td>{{i+1}}</td>
+          <td>{{emp.eId}}</td>
+          <td>{{emp.name | titleToName : emp.gender }}</td>
+          <td>{{emp.gender}}</td>
+          <td>{{emp.salary | convertionOfSalary }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <button (click)="addEmp()">Add Emp</button>
+  </div>
+
+  <div class="col-sm-4">
+    <h3>Add Employee</h3>
+    <table>
+      <tr>
+        <td>Emp Id: </td>
+        <td><input type="text" [(ngModel)]="EId" /></td>
+      </tr>
+      <tr>
+        <td>Emp Name: </td>
+        <td><input type="text" [(ngModel)]="Name"/></td>
+      </tr>
+      <tr>
+        <td>Gender:</td>
+        <td><input type="text" [(ngModel)]="Gender"/></td>
+      </tr>
+      <tr>
+        <td>Salary:</td>
+        <td><input type="text" [(ngModel)]="Salary"/></td>
+      </tr>
+    </table>
+    <button class="btn btn-primary" (click)="addingEmp()">Add Emp</button>
+  </div>
+</div>

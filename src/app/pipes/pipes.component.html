@@ -1,0 +1,49 @@
+
+<h4>{{name}}</h4>
+<h4>{{name | uppercase}}</h4>
+<h4>{{name | lowercase}}</h4>
+<h4>{{name | titlecase}}</h4>
+
+<hr/>
+
+<h4>{{mySal}}</h4>
+<h4>{{mySal | currency}}</h4>
+<h4>{{mySal | currency : 'INR'}}</h4>
+<h4>{{mySal | currency: '&yen;'}}</h4>
+<h4>{{mySal | currency: '&euro;'}}</h4>
+
+<hr/>
+
+<h4>{{today}}</h4>
+<h4>{{today | date}}</h4>
+<h4>{{today | date : "fullDate"}}</h4>
+<h4>{{today | date : "mediumDate"}}</h4>
+<h4>{{today | date : "shortDate"}}</h4>
+<h4>{{today | date : "fullTime"}}</h4>
+<h4>{{today | date : "mediumTime"}}</h4>
+<h4>{{today | date : "shortTime"}}</h4>
+<h4>{{today | date : "dd.MMMM.yyyy"}}</h4>
+<h4>{{today | date : "dd.MMM.yyyy"}}</h4>
+<h4>{{today | date : "dd / MM / yy"}}</h4>
+<!-- samall mm shows minit -->
+<h4>{{today | date : "dd / mm / yy"}}</h4>
+<h4>{{today | date : "fullTime" : 'UTC'}}</h4>
+
+<hr/>
+
+<h4> {{ 70295692659265 }} </h4>
+<h4> {{ 70295692659265 | number }} </h4>
+<h4> {{ 70.295692659265 | number }} </h4>
+<h4> {{ 70.295692659265 | number : '3.2-4' }} </h4>
+<h4> {{ 70.2 | number : '3.2-4' }} </h4>
+<h4> {{ 0.702 | percent }} </h4>
+<hr/>
+<!-- custom pipe to convert in million or billian-->
+<h4> {{ 35365674657 | convertionOfSalary}} </h4>
+<hr/>
+
+<div style="margin: 20px;">
+<input type="number" placeholder="Enter number" [(ngModel)]="text" />
+
+<h5>Display Ordinal: {{text | ordinal }} </h5>
+</div>

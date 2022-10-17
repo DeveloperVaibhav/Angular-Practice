@@ -1,0 +1,57 @@
+
+<div>
+    <div class="row">
+        <div class="col-sm-8">
+            <h3>User List</h3>
+            <img *ngIf="isLoading" src="https://i.gifer.com/origin/34/34338d26023e5515f6cc8969aa027bca_w200.gif">
+            <table *ngIf="!isLoading" class="table table-bordered table-striped">
+                <thead>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Website</th>
+                    <th>Delete User</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users">
+                        <td>{{user.id}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.phone}}</td>
+                        <td>{{user.website}}</td>
+                        <td><button class="btn btn-danger" (click)="deleteUser(user.id)">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-4">
+            <h3>Add User</h3>
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <td>Name</td>
+                        <td><input type="text" #name /></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><input type="text" #email /></td>
+                    </tr>
+                    <tr>
+                        <td>Phone</td>
+                        <td><input type="text" #phone /></td>
+                    </tr>
+                    <tr>
+                        <td>Website</td>
+                        <td><input type="text" #website /></td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <div style="margin: 15px;">
+                <button class="btn btn-primary" 
+                (click)="addNewUser(name.value,email.value,phone.value,website.value)">Add User</button>
+            </div>
+        </div>
+    </div>
+</div>

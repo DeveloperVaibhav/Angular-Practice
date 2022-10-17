@@ -1,0 +1,27 @@
+
+<div class="parent container">
+    <div class="row">
+        
+            <h4 style="text-align: center;">parent component works!</h4>
+            value of 'a' : {{a}} <br>
+            <div>cars: [ <span *ngFor="let car of cars">{{car}},</span>]</div> 
+            <button class="col-sm-2" (click)="cars.push('Hundai')">add a new car</button>
+    </div>
+    <hr/>
+    <div class="row">
+        <div class="col-sm-4">
+            <input type="number" #myInputbox1 /> 
+            <input type="number" #myInputbox2 />
+            <input type="number" #myInputbox2 />
+            <input type="number" #myInputbox2 />
+        </div>
+</div>
+    <div class="row">
+        <div class="col-sm-6 child">
+            <app-child1 [a_value]="a" [cars]="cars" #child_1 ></app-child1>
+        </div>
+        <div class="col-sm-6 child">
+            <app-child2 [child1_ref]="child_1"></app-child2>
+        </div>
+    </div>
+</div>

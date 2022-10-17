@@ -1,0 +1,25 @@
+<p>observable3 works!</p>
+
+<!-- fetch the details from 2 rest api and display in one table-->
+
+<table class="table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>User Id from req1</th>
+            <th>title from req1</th>
+            <th>completed from req1</th>
+            <th>username from req2</th>
+            <th>email from req2</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of finalData;let i=index">
+            <td>{{data[i].userId}}</td>
+            <td>{{data[i].title}}</td>
+            <td>{{data[i].completed}}</td>
+            <td>{{data[i].username}}</td>
+            <td>{{data[i].email}}</td>
+        </tr>
+    </tbody>
+</table>

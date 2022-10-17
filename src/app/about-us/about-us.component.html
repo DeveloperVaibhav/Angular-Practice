@@ -1,0 +1,20 @@
+<p>about-us works!</p>
+
+<p>
+    <!-- using href, whole page will be loaded -->
+    <a href="/career"> Go to Career </a>
+</p>
+
+<p>
+    <!--If we use routerLink instead of href, then only specific component will be loaded at <router-outlet>-->
+    <a routerLink="/career">Take me to Career</a> <br><br>
+    <button routerLink="/career"> Take me to Career</button>
+</p>
+
+<p>
+    <!-- If we want to do some stuff before navigating to routerLink url 
+    then we can create a function and use router service  -->
+    <button (click)="goToCareer()">
+        Do something before navigating me to Career
+    </button>
+</p>

@@ -1,0 +1,97 @@
+<!-- Interpolation binding-->
+<div class="hello" style="background-color:yellow ;"> Hello {{name}} </div>                          <!-- o/p: hello vaibhav -->
+
+<!-- Property binding -->
+<div> Hello <span [innerHTML]="name"></span></div>   <!-- o/p: hello vaibhav -->
+<div [innerHTML]="name"></div>                        <!-- o/p: vaibhav -->
+
+<!-- Interpolation -->
+<img src="{{img_url}}" alt="" width="200" height="200" /> &nbsp;
+
+<!-- Property binding -->
+<img [src]="img_url" alt="" width="200" height="200" /> &nbsp; "OR"
+<img bind-src="img_url" alt="" width="200" height="200" />  <br><br>
+ 
+1 way binding: <input value="{{name}}"/> <br><br>
+1 way binding:<input [value]="name"/> <br><br>
+1 way binding:<input bind-value="name"/> <br><br>
+
+<!-- won't change the value of name in ts file, only change the value wherever name is displayed on browser -->
+2 way binding:<input [(ngModel)]="name"/> <br><br> 
+
+<!-- interpolation, flag=true or false , button will be disabled, interpolation won't work for boolean -->
+<button class="btn btn-primary" disabled="{{flag}}"> Submit </button> &nbsp;
+
+<!-- property binding, when flag=true only then button will be disabled -->
+<button class="btn btn-primary" [disabled]="flag"> Submit </button> &nbsp;
+<button class="btn btn-primary" bind-disabled="flag"> Submit </button> &nbsp;
+
+<br><br>
+
+<!-- we directly can not print the object -->
+{{user}}  <!-- o/p: [object Object] --> 
+
+<!-- If we want to print object then use json -->
+<div> {{user | json}} </div>  <!--o/p: { "name": "vaibhav", "age": 25, "add": "nagpur" } -->
+
+<!-- accessing each element of object -->
+Name: {{user.name}} &nbsp; 
+Age: {{user.age}} &nbsp; 
+Add: {{user.add}}
+
+<!-- array can be print directly -->
+<div> {{cars}} </div>  <!-- o/p: BMW,audi,honda -->
+
+<br><br>
+
+<!-- Event binding -->
+<button (click)="f1()"> button-1 </button> "OR"
+<button on-click="f1()"> button-1 </button>
+
+<br><br>
+==========================================================================
+<br><br>
+<!-- show or hide the text on click of button -->
+<h3 [hidden]="flag1"> Helloooooooo folk </h3>
+<button (click)="toggleFlag()">{{flag1?'SHOW':'HIDE'}} </button>
+<br><br>
+==========================================================================
+<br><br>
+
+<input type={{txt}} value="1ndsj#2$qa"/>  &nbsp; <button (click)="showPassword()"> Show/Hide Password </button>
+
+<br><br>
+=========================================
+<br><br>
+<!-- display addition of 2 numbers using data binding-->
+<input type="number" [(ngModel)]="val1" />&nbsp;
+<input type="number" [(ngModel)]="val2" /><br/><br/>
+
+<p>Sum of 2 number: {{val1+val2}}</p> <!-- from ts file -->
+
+<br><br>
+=========================================
+<br><br>
+
+<!-- Template reference variables -->
+Number1: <input type="number" #num1 /> &nbsp;
+Number2: <input type="number" ref-num2 /> <br/><br/>
+
+<button (click)="addition(num1.value, num2.value)" > Add </button>
+
+<br><br>
+=========================================
+<br><br>
+
+<!-- Class binding -->
+
+<input type="number" [(ngModel)]="val" />
+<h4 [class.text-danger]="val%2 !== 0"> {{val}} is {{val%2 == 0 ? 'Even':'Odd'}}</h4>
+<!-- text-danger is a bootstrap class -->
+
+<button class="btn" [ngClass]="flag1 ? 'btn-success':'btn-danger'">class binding</button>
+
+<br><br>
+=========================================
+<br><br>
+

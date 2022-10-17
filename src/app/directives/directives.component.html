@@ -1,0 +1,193 @@
+<!-- for content projection, shows the content that is written in parent -->
+<ng-content></ng-content>
+
+<!-- Structural Directives -->
+
+<!-- Non preferable(checking two conditions unnecessarily) -->
+<h4 *ngIf="n%2 == 0"> {{n}} is even</h4>
+<h4 *ngIf="n%2 != 0"> {{n}} is odd</h4>
+
+<!-- preferable(using template reference variable)-->
+<!-- The content will be replaced with ng-template content for else condition  -->
+<div *ngIf="n%2 == 0; else oddBlock"> {{n}} is even </div>
+<ng-template #oddBlock> {{n}} is odd </ng-template>
+
+
+<br><br>
+=====================================================================
+<br><br>
+
+<h1 [ngSwitch]="n">
+    <p *ngSwitchCase="1">Monday</p>
+    <p *ngSwitchCase="2">Tuesday</p>
+    <p *ngSwitchCase="3">Wednesday</p>
+    <p *ngSwitchCase="4">Thursday</p>
+    <p *ngSwitchCase="5">Friday</p>
+    <p *ngSwitchCase="6">Saturday</p>
+    <p *ngSwitchCase="7">Sunday</p>
+    <p *ngSwitchDefault>Not a valid number</p>
+</h1>
+
+
+<br><br>
+=====================================================================
+<br><br>
+
+<div>
+    First Name:
+    <span *ngIf="employee.firstName"> {{employee.firstName}}</span>
+    <span *ngIf="!employee.firstName">Not Available</span>
+    <!-- OR -->
+    <!-- <span *ngIf="employee.lastName=='' || employee.lastName==null || employee.lastName==undefined">Not Available</span> -->
+
+    <br><br>
+
+    Last Name:
+    <span *ngIf="employee.lastName">{{employee.lastName}}</span>
+    <span *ngIf="!employee.lastName">Not Available</span>
+
+    <br><br>
+    Age:
+    <span *ngIf="employee.age">{{employee.age}}</span>
+    <span *ngIf="!employee.age">Not Available</span>
+
+    <br><br>
+    Address:
+    <span *ngIf="employee.add">{{employee.add}}</span>
+    <span *ngIf="!employee.add">Not Available</span>
+
+</div>
+<hr />
+<!-- OR -->
+
+<div>
+    First Name:
+    <span *ngIf="employee.firstName; else firstName"> {{employee.firstName}}</span>
+    <ng-template #firstName>Not Available</ng-template>
+    <br><br>
+
+    Last Name:
+    <span *ngIf="employee.lastName; else lastName">{{employee.lastName}}</span>
+    <ng-template #lastName>Not Available</ng-template>
+
+    <br><br>
+    Age:
+    <span *ngIf="employee.age; else age">{{employee.age}}</span>
+    <ng-template #age>Not Available</ng-template>
+
+    <br><br>
+    Address:
+    <span *ngIf="employee.add; else add">{{employee.add}}</span>
+    <ng-template #add>Not Available</ng-template>
+
+</div>
+<hr />
+=====================================================================
+
+
+<div *ngFor="let car of cars, let i = index, let x= first">
+    {{car}} ---> {{i}} ---> {{x}}
+</div>
+
+<hr />
+
+<div *ngFor="let car of cars, let i = index, let x= even">
+    <span *ngIf="x"> {{car}} ---> {{i}} ---> {{x}} </span>
+</div>
+
+<hr />
+=====================================================================
+
+<h4> *ngIf vs Hidden</h4>
+
+<!-- table is not created in the DOM using *ngIf -->
+<!-- <table *ngIf="flag" class="table table-bordered table-striped">
+    <tr>
+        <td>data-1</td>
+        <td>data-2</td>
+        <td>data-3</td>
+    </tr>
+    <tr>
+        <td>data-1</td>
+        <td>data-2</td>
+        <td>data-3</td>
+    </tr>
+    <tr>
+        <td>data-1</td>
+        <td>data-2</td>
+        <td>data-3</td>
+    </tr>
+    <tr>
+        <td>data-1</td>
+        <td>data-2</td>
+        <td>data-3</td>
+    </tr>
+    <tr>
+        <td>data-1</td>
+        <td>data-2</td>
+        <td>data-3</td>
+    </tr>
+</table> -->
+
+<!-- hidden -->
+<input type="checkbox" (click)="toggleFlag()" [(ngModel)]="flag" /> {{flag}}
+<!-- If we use *ngIf here, execution will be very slow for large table -->
+<!-- <table *ngIf="flag" class="table table-bordered table-striped"> -->
+<table [hidden]="!flag" class="table table-bordered table-striped">
+    <tr>
+        <td>data-1</td>
+        <td>data-2</td>
+        <td>data-3</td>
+    </tr>
+    <tr>
+        <td>data-1</td>
+        <td>data-2</td>
+        <td>data-3</td>
+    </tr>
+    <tr>
+        <td>data-1</td>
+        <td>data-2</td>
+        <td>data-3</td>
+    </tr>
+    <tr>
+        <td>data-1</td>
+        <td>data-2</td>
+        <td>data-3</td>
+    </tr>
+    <tr>
+        <td>data-1</td>
+        <td>data-2</td>
+        <td>data-3</td>
+    </tr>
+</table>
+
+<hr />
+=====================================================================
+<table class="table-bordered table-striped">
+    <tr>
+        <td>Sr no.</td>
+        <td>First Name</td>
+        <td>Last name</td>
+        <td>Age</td>
+        <td>City</td>
+        <td>State</td>
+        <td>Cars</td>
+    </tr>
+    <tr *ngFor="let emp of emps; let i = index">
+        <td>{{i+1}}</td>
+        <td>{{emp.firstName}}</td>
+        <td>{{emp.lastName}}</td>
+        <td>{{emp.age}}</td>
+        <!-- address is optional, if address is there or not doesn't matter -->
+        <td>{{emp?.add.city}}</td>
+        <td>{{emp.add?.state}}</td>
+        <td>{{!emp.car || emp.car?.length == 0 ? 'No cars available': emp.car}}</td>
+    </tr>
+
+</table>
+
+<hr/>
+<!-- shows tooltip when ellipsis 3 dots are shown on text -->
+<div isEllipsisActive style=" width: 250px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, deserunt.
+</div>

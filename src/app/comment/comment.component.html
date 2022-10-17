@@ -1,0 +1,12 @@
+<p>comment works!</p>
+
+<table class="table table-bordered">
+    <tr *ngFor="let comment of comments">
+        <td>{{comment.id}}</td>
+        <!-- <td>{{comment.postId}}</td> -->
+        <td>{{comment.name}}</td>
+        <td>{{comment.email}}</td>
+        <!-- <td>{{comment.body}}</td> -->
+        <td>{{comment.fullName()}}</td>
+    </tr>
+</table>
